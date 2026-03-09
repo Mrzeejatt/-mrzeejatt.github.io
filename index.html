@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zeeshan Ali | Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+        }
+
+        /* --- Floating Navbar --- */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 25px;
+            width: 90%;
+            max-width: 1200px;
+            margin: 20px auto;
+            position: sticky;
+            top: 20px;
+            background: rgba(25, 25, 25, 0.7);
+            backdrop-filter: blur(12px);
+            z-index: 1000;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+        }
+
+        .logo img { height: 40px; width: auto; }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #fff;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 8px 18px;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover, .nav-links a.active {
+            background: #ff7300;
+            color: #fff;
+        }
+
+        .nav-btn-main {
+            background: #ff7300 !important;
+            box-shadow: 0 4px 10px rgba(255, 115, 0, 0.4);
+        }
+
+        .menu-toggle { display: none; font-size: 22px; color: #ff7300; cursor: pointer; }
+
+        /* Close Button inside Menu (Mobile Only) */
+        .close-menu {
+            display: none;
+            font-size: 28px;
+            color: #ff7300;
+            cursor: pointer;
+            position: absolute;
+            top: 25px;
+            right: 25px;
+        }
+
+        /* --- Hero Section --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 60px 10%;
+            min-height: 85vh;
+        }
+
+        .hero-content { flex: 1.2; }
+        .hero-image { flex: 0.8; display: flex; justify-content: flex-end; }
+
+        .image-circle {
+            width: 350px; 
+            height: 350px;
+            border-radius: 50%; 
+            border: 6px solid #ff7300;
+            overflow: hidden; 
+            box-shadow: 0 0 40px rgba(255, 115, 0, 0.3);
+            animation: picBlink 3s ease-in-out infinite;
+        }
+
+        @keyframes picBlink {
+            0%, 100% { border-color: #ff7300; box-shadow: 0 0 25px rgba(255, 115, 0, 0.4); }
+            50% { border-color: #ffa500; box-shadow: 0 0 50px rgba(255, 115, 0, 0.8); }
+        }
+
+        .image-circle img { width: 100%; height: 100%; object-fit: cover; }
+
+        .hero-content h1 { font-size: 60px; font-weight: 800; line-height: 1.1; margin: 10px 0; }
+        .role { font-size: 45px; color: #ff7300; font-weight: 800; margin-bottom: 25px; }
+
+        .hero-btns { display: flex; gap: 20px; margin-bottom: 40px; }
+        
+        .capsule-btn {
+            background: #ff7300;
+            color: #fff;
+            padding: 12px 35px;
+            border-radius: 35px;
+            text-decoration: none;
+            font-weight: bold;
+            display: inline-block;
+            transition: 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .capsule-btn-outline { background: transparent; border: 2px solid #ff7300; }
+
+        .capsule-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(255, 115, 0, 0.5);
+        }
+
+        /* --- Stats Box --- */
+        .stats-box {
+            background: #1a1a1a;
+            display: inline-flex;
+            padding: 15px 25px;
+            border-radius: 20px;
+            border: 1px solid #333;
+        }
+        .stat-item .number { font-size: 28px; font-weight: bold; color: #ff7300; display: block; }
+        .divider { width: 1px; height: 40px; background: #444; margin: 0 30px; }
+
+        /* --- Sections Style --- */
+        .about-section, .services-section, .projects-section {
+            padding: 80px 10%;
+            text-align: center;
+        }
+        .about-section { background: #1a1a1a; }
+        .services-section { background: #151515; }
+        .projects-section { background: #111; }
+
+        .section-title { font-size: 40px; margin-bottom: 50px; font-weight: 800; }
+        .section-title span { color: #ff7300; }
+
+        .grid-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card-style {
+            background: #1a1a1a;
+            border-radius: 20px;
+            padding: 35px;
+            border: 1px solid #333;
+            transition: 0.4s;
+            text-align: left;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .card-style:hover { border-color: #ff7300; transform: translateY(-10px); }
+        .card-style i { font-size: 40px; color: #ff7300; margin-bottom: 20px; }
+
+        .social-icons { display: flex; justify-content: center; gap: 20px; margin-top: 25px; }
+        .social-icons a {
+            width: 50px; height: 50px; background: #333; color: #ff7300;
+            display: flex; align-items: center; justify-content: center;
+            border-radius: 50%; transition: 0.3s; font-size: 20px;
+        }
+        .social-icons a:hover { background: #ff7300; color: #fff; transform: scale(1.1); }
+
+        footer { padding: 30px; text-align: center; background: #000; color: #888; border-top: 1px solid #333; }
+
+        /* --- Responsive View --- */
+        @media (max-width: 991px) {
+            .hero { flex-direction: column-reverse; text-align: center; }
+            .hero-image { justify-content: center; margin-bottom: 30px; }
+            .image-circle { width: 250px; height: 250px; }
+            .hero-content h1 { font-size: 40px; }
+            .menu-toggle { display: block; }
+
+            .nav-links {
+                position: fixed; top: 0; right: -100%; height: 100vh; width: 75%;
+                background: #151515; flex-direction: column; justify-content: center;
+                transition: 0.5s; z-index: 2000;
+            }
+            .nav-links.active { right: 0; }
+            .nav-links li { margin: 15px 0; width: 100%; text-align: center; }
+            .close-menu { display: block; }
+        }
+
+        @media print {
+            .navbar, .menu-toggle, .hero-btns, .social-icons { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="logo"><img src="logo.png" alt="Logo"></div>
+        <ul class="nav-links" id="navLinks">
+            <div class="close-menu" id="closeBtn"><i class="fas fa-times"></i></div>
+            <li><a href="#" class="active">Home</a></li>
+            <li><a href="#projects">Portfolio</a></li>
+            <li><a href="#services">Service</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="https://wa.me/923273104500" class="nav-btn-main" target="_blank">Contact Me</a></li>
+        </ul>
+        <div class="menu-toggle" id="openBtn"><i class="fas fa-bars"></i></div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-content">
+            <h3>Hi I am</h3>
+            <h1>Zeeshan Ali</h1>
+            <h2 class="role">Web Developer </h2>
+            <div class="hero-btns">
+                <a href="https://wa.me/923273104500" class="capsule-btn" target="_blank">Contact Me</a>
+                <button onclick="window.print()" class="capsule-btn capsule-btn-outline">Download CV</button>
+            </div>
+            <div class="stats-box">
+                <div class="stat-item"><span class="number">5+</span><p>Experience</p></div>
+                <div class="divider"></div>
+                <div class="stat-item"><span class="number">10+</span><p>Project Done</p></div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="image-circle"><img src="mypic.png" alt="Zeeshan Ali"></div>
+        </div>
+    </section>
+
+    <section class="about-section" id="about">
+        <h2 class="section-title">About <span>Me</span></h2>
+        <p style="max-width: 800px; margin: 0 auto; color: #ccc;">I am Zeeshan Ali, a passionate Designer & Developer dedicated to creating visually stunning and functional digital experiences.</p>
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/zeeshan-ali-5b0357346" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://www.instagram.com/zeejatt804" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://www.tiktok.com/@zeejatt804" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.facebook.com/share/1APsrg2m2z/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        </div>
+    </section>
+
+    <section class="services-section" id="services">
+        <h2 class="section-title">My <span>Services</span></h2>
+        <div class="grid-layout">
+            <div class="card-style">
+                <i class="fas fa-code"></i>
+                <h4>Frontend Developer</h4>
+                <p>Responsive and high-performance websites with clean code.</p>
+            </div>
+            <div class="card-style">
+                <i class="fas fa-paint-brush"></i>
+                <h4>Graphic Designer</h4>
+                <p>Stunning visuals, logos, and branding materials.</p>
+            </div>
+            <div class="card-style">
+                <i class="fas fa-bezier-curve"></i>
+                <h4>UI/UX Designer</h4>
+                <p>User-friendly interfaces and meaningful digital experiences.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="projects-section" id="projects">
+        <h2 class="section-title">My GitHub <span>Projects</span></h2>
+        <div class="grid-layout">
+            <a href="https://mrzeejatt.github.io/-My-Ramadan-Web-Project/" class="card-style">
+                <i class="fas fa-moon"></i>
+                <h4>Ramadan Schedule</h4>
+                <p>Professional Ramadan timing app.</p>
+            </a>
+            <a href="https://mrzeejatt.github.io/-Professional-Neon-Login-Page/" class="card-style">
+                <i class="fas fa-sign-in-alt"></i>
+                <h4>Neon Login Page</h4>
+                <p>Modern login page with neon effects.</p>
+            </a>
+            <a href="https://Mrzeejatt.github.io/Crypto-Pulse/" class="card-style">
+                <i class="fas fa-coins"></i>
+                <h4>Crypto Dashboard</h4>
+                <p>Live crypto price tracking dashboard.</p>
+            </a>
+            <a href="https://mrzeejatt.github.io/my-portfolio/" class="card-style">
+                <i class="fas fa-user-circle"></i>
+                <h4>Personal Portfolio</h4>
+                <p>The website you are currently viewing.</p>
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Created by Zeeshan Ali. All rights reserved.</p>
+    </footer>
+
+    <script>
+        const navLinks = document.getElementById('navLinks');
+        const openBtn = document.getElementById('openBtn');
+        const closeBtn = document.getElementById('closeBtn');
+
+        // Open Menu
+        openBtn.onclick = () => {
+            navLinks.classList.add('active');
+        };
+
+        // Close Menu
+        closeBtn.onclick = () => {
+            navLinks.classList.remove('active');
+        };
+        
+        // Close menu when clicking on any link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.onclick = () => { 
+                navLinks.classList.remove('active'); 
+            };
+        });
+    </script>
+</body>
+</html>
